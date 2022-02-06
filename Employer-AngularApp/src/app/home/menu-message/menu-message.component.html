@@ -1,0 +1,39 @@
+<br/>
+<div class="container-fluid">
+ <div class="btn-group" mdbDropdown>
+    <a mdbDropdownToggle type="button" mdbBtn color="dark" class="dropdown-toggle waves-light"
+      mdbWavesEffect>
+      Filter
+    </a>
+  
+    <div class="dropdown-menu dropdown-primary">
+      <a class="dropdown-item" (click)="getAllMessages()">All</a>
+      <a class="dropdown-item" (click)="getOnlyRead()">Read</a>
+      <a class="dropdown-item" (click)="getOnlyUnread()">Unread</a>
+      </div>
+  </div> <br/><br/>
+  <div class="table-responsive" >
+    <table class="table" >
+        <thead class="table-dark" style="text-align: center">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Content</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let message of messages; let i = index">
+            <tr style="text-align: center; vertical-align: middle;">
+              <th scope="row">{{i+1}}</th>
+              <td>{{message.subject}}</td>
+              <td>{{message.content | slice:0:60}}</td>
+              <td>{{message.status}}</td>
+              <td><button type="button" class="btn btn-primary" (click)="openModal(message.content, message.id, i)">Read</button>
+                <!-- <button  type="button" class="btn btn-danger" [disabled]="reservation.status == 'Declined'"  (click)="openModalDecline(reservation.id, i)">Decline</button></td> -->
+                <!-- [disabled]="reservation.status != 'New'" -->
+            </tr>
+    </table>
+  </div>
+</div>
+

@@ -1,0 +1,71 @@
+<!-- <div #myModel class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content"> -->
+        <div class="modal-header " >
+          <h3 class="modal-title">Add schedule</h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="OnSubmit()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+              <h5>Add date</h5>
+                <div class="input-group" style="width: 300px;">  
+                  <!-- <input type="text" class="form-control" id="recipient-name" style="width: 250px;"> -->                 
+                    <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="date" [ngModelOptions]="{standalone: true}"
+                          ngbDatepicker #d="ngbDatepicker" required readonly > 
+                          <div class="input-group-append">
+                      <button class="btn calendar" (click)="d.toggle();" type="button" style="width: 45px; height: 45px;"></button>
+                      <span type="submit" class="btn btn-danger" (click)="clearDate()">X</span>
+                    </div>
+                </div>
+                <hr>
+                    <h5>Add day</h5>
+                    <div class="input-group" style="width: 300px;">
+                      <select class="form-control" id="FormControlSelect" [(ngModel)]="day"  [ngModelOptions]="{standalone: true}">
+                        <option selected>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                        <option>Saturday</option>
+                        <option>Sunday</option>
+                      </select><div class="input-group-append"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+                      <div class="input-group-append">
+                      <span type="submit" class="btn btn-danger" (click)="clearDay()">X</span>
+                      </div>
+                    </div>
+                <!-- <div class="form-group">
+                    
+                  <input class="form-control" id="text" style="width: 250px;" [(ngModel)]="day"  [ngModelOptions]="{standalone: true}">
+                </div> -->
+                <!-- <div class="form-group">
+                    <hr>
+                    <h5>Add hour</h5>
+                  <input class="form-control" id="message-text" style="width: 250px;" [(ngModel)]="hour"  [ngModelOptions]="{standalone: true}">
+                </div> -->
+                <h5>Add hour</h5>
+                    <div class="input-group" style="width: 300px;" >
+                      
+                      <select class="form-control" id="FormControlSelect"  [(ngModel)]="hour"  [ngModelOptions]="{standalone: true}" >
+                        <option *ngFor="let i of num">{{i<10 ? "0"+i : i}}</option>
+                        
+                      </select><div class="input-group-append"><p>&nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+                      <div class="input-group-append">
+                      <span type="submit" class="btn btn-danger" (click)="clearHour()">X</span>
+                      </div>
+                    </div>
+              </form>  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="OnSubmit()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addScheduleToFlight()">Add</button>
+         
+        </div>
+        <div class="modal-footer">
+          <p>
+            <ngb-alert *ngIf="validator" [dismissible]="false">
+              <strong>Warning!</strong> Please fill all input box!!!
+            </ngb-alert>
+          </p>
+        </div>

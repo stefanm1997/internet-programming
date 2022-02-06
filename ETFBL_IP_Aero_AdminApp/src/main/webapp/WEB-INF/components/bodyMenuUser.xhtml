@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<script src="resources/js/populate.js"></script>
+</head>
+<h1>Admin Aero application</h1>
+<br />
+<div id="userTable" class="container-fluid"
+	style="display: flex; justify-content: center;">
+	<div onclick="populateUsers()" ondblclick="clearInputUser();">
+		<h:dataTable id="table_id" value="#{userBean.users}" var="userTable"
+			styleClass="order-table" headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row">
+			<h:column>
+				<h:outputText style="display: none;" value="#{userTable.ID}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+				<h:outputText value="#{userTable.email}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Firstname</f:facet>
+				<h:outputText value="#{userTable.firstname}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Lastname</f:facet>
+				<h:outputText value="#{userTable.lastname}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Address</f:facet>
+				<h:outputText value="#{userTable.address}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Country</f:facet>
+				<h:outputText value="#{userTable.country}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Username</f:facet>
+				<h:outputText value="#{userTable.username}" />
+			</h:column>
+
+			<!-- <h:column>
+				<f:facet name="header">Password</f:facet>
+				<h:outputText value="#{userTable.password}" />
+			</h:column> -->
+
+			<h:column>
+				<f:facet name="header">Type</f:facet>
+				<h:outputText value="#{userTable.type}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">DELETE</f:facet>
+				<!-- <a href="index.xhtml"><span class="glyphicon glyphicon-remove" style="color:red"></span>
+						</a>  -->
+				<h:form>
+					<h:commandLink action="#{userBean.deleteUser}"
+						onclick="scriptAlert('Successfully deleted user with username: #{userTable.username} ')">
+						<f:param value="#{userTable.ID}" name="id" />
+						<i class="glyphicon glyphicon-remove" style="color: red" />
+
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</div>
+</div>
+
+<br />
+<br />
+<div class="container-fluid"
+	style="display: flex; justify-content: center;">
+	<!-- style="float: right;" -->
+	<!--  <div class="d-flex justify-content-end">  -->
+	<br />
+	<h:form id="addForm" class="form-horizontal" style="">
+		<div class="form-group" style="display: none;">
+			<h:outputLabel class="control-label col-sm-3 ">ID</h:outputLabel>
+			<div class="col-sm-9 ">
+				<h:inputText id="idDiv" class="form-control" required="true"
+					value="#{userBean.user.ID}" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3 ">Email:</h:outputLabel>
+			<div class="col-sm-9 ">
+				<h:inputText id="emailDiv" class="form-control" required="true"
+					requiredMessage="Please enter your email!"
+					value="#{userBean.user.email}" />
+				<h:message for="emailDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">Firstname:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="firstNameDiv" class="form-control" required="true"
+					requiredMessage="Please enter your firstname!"
+					value="#{userBean.user.firstname}" />
+				<h:message for="firstNameDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">Lastname:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="lastNameDiv" class="form-control" required="true"
+					requiredMessage="Please enter your lastname!"
+					value="#{userBean.user.lastname}" />
+				<h:message for="lastNameDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">Address:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="addressDiv" class="form-control" required="true"
+					requiredMessage="Please enter your address!"
+					value="#{userBean.user.address}" />
+				<h:message for="addressDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">Country:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="countryDiv" class="form-control" required="true"
+					requiredMessage="Please enter your country!"
+					value="#{userBean.user.country}" />
+				<h:message for="countryDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">Username:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="userNameDiv" class="form-control" required="true"
+					requiredMessage="Please enter your username!"
+					value="#{userBean.user.username}" />
+				<h:message for="userNameDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">Password:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputSecret id="passwordDiv" class="form-control" required="true"
+					requiredMessage="Please enter your password!"
+					value="#{userBean.user.password}" />
+				<h:message for="passwordDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">Type:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="typeDiv" class="form-control" required="true"
+					requiredMessage="Please enter your type!"
+					value="#{userBean.user.type}" />
+				<h:message for="typeDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<br />
+		<h:form>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-5">
+					<h:commandButton action="#{userBean.addUser}" id="addBtn"
+						type="submit" class="btn btn-success btn-md  btn-block"
+						value="Add">
+					</h:commandButton>
+					<!-- <script>alert('Successfully added user! ')</script> -->
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-5">
+					<!-- <f:param value="#{user.ID}" name="userId" /> -->
+					<h:commandButton action="#{userBean.updateUser}" id="updateBtn"
+						type="submit" class="btn btn-primary btn-md  btn-block"
+						value="Update">
+					</h:commandButton>
+				</div>
+			</div>
+			<div class="form-group">
+				<h:outputLabel class="control-label col-sm-3"></h:outputLabel>
+				<div class="col-sm-5">
+					<h:commandButton id="resetBtn" type="submit"
+						onclick="clearInputUser();" class="btn btn-secondary btn-md btn-block"
+						value="Reset">
+					</h:commandButton>
+				</div>
+			</div>
+		</h:form>
+	</h:form>
+</div>
+<div class="container-fluid"
+	style="display: flex; justify-content: center;">
+	<h:form id="resetForm" class="form-horizontal"
+		style="height:34px; width:302px;">
+		<!-- 	<div class="form-group">
+			<h:outputLabel  class="control-label col-sm-3"></h:outputLabel>
+			<div class="col-sm-5">
+				<h:commandButton id="resetBtn" type="submit" onclick="clearInput();"  
+					class="btn btn-secondary btn-md btn-block" value="Reset">
+				</h:commandButton>
+			</div>
+		</div> -->
+		<br />
+		<h:outputLabel value="#{userBean.message}"
+			style="font-style: oblique;font-size: medium;color: red;" />
+	</h:form>
+</div>
+</html>

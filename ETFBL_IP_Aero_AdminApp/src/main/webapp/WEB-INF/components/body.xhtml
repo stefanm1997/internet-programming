@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<div class="container-fluid">
+	<h1>Admin Aero application</h1>
+	<br /> <br /> <br /> <br />
+	<h:form id="loginForm" class="form-horizontal" style="">
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-4" >Username:</h:outputLabel>
+			<div class="col-sm-4">
+				<h:inputText id="userNameDiv" type="email" class="form-control"
+					required="false" placeholder="Enter username"
+					value="#{adminBean.admin.username}"
+					requiredMessage="Please enter your username!" />
+				<h:message for="userNameDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-4">Password:</h:outputLabel>
+			<div class="col-sm-4">
+				<h:inputSecret id="passwordDiv" type="password" class="form-control"
+					required="false" placeholder="Enter password"
+					value="#{adminBean.admin.password}"
+					requiredMessage="Please enter your password!" />
+				<h:message for="passwordDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="form-group">
+			<div id="loginBtn" class="col-sm-offset-4 col-sm-4">
+				<h:commandButton type="submit" class="btn btn-default btn-md"
+					value="Login" action="#{adminBean.loginAdmin}" />
+					<br/>
+				<h:outputLabel value="#{adminBean.message}"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<br />
+		<!-- 		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-4">
+				<br />
+				<h:message for="passwordDiv"></h:message>
+			</div>
+		</div> -->
+	</h:form>
+</div>
+</html>

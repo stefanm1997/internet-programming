@@ -1,0 +1,38 @@
+<!-- <div class="container " style="height: 100px; width: 500px;">
+    <br/>
+    <h1>Employer Aero application</h1>
+    <form class="text-center p-5">
+        <br/>
+        <input type="username" id="defaultLoginFormUsername" class="form-control mb-4" placeholder="Username">
+        <br/>
+        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+        <br/>
+        <button  color="info" block="true" class="my-4 btn-dark btn-lg" type="submit">Login</button>  
+      </form>
+</div> -->
+<br/>
+<h1>Employer Aero application</h1>
+    <div class="col-md-6 mx-auto my-5">
+      <section class="form-elegant">
+        <mdb-card>          
+            <mdb-card-body class="mx-4">
+            <div class="text-center">
+              <h3 class="dark-grey-text mb-2">
+                <strong>Sign in</strong>
+              </h3>
+            </div>
+            <form [formGroup]="form" class="text-center p-5">               
+                <input type="username" formControlName="username" id="defaultLoginFormUsername" class="form-control mb-4" placeholder="Username"><br/>
+                <input type="password" formControlName="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                <button  color="info" block="true" class="my-4 btn-dark btn-lg" type="submit" (click)="login(form)">Login</button>  
+                <p>
+                  <ngb-alert *ngIf="validator" [dismissible]="false">
+                    <strong>Warning!</strong> Username or password are wrong or empty!!!
+                  </ngb-alert>
+                </p>
+              </form>
+              
+          </mdb-card-body>      
+        </mdb-card>  
+      </section>
+</div>

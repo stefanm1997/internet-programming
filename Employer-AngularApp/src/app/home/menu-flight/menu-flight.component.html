@@ -1,0 +1,21 @@
+
+<div class="row row-cols-1 row-cols-md-5 container-fluid" >
+  <div class="card-deck" *ngFor="let flight of flights">
+    <div class="card" style="width: 18rem;" >
+        <img class="card-img-top" src="assets/brand.ico" height="150px"  alt="Card image cap">
+        <div class="card-body">
+          <h3 class="card-title">Flight information</h3>
+          <!-- <p>{{i}}</p> -->
+          
+          <p class="card-text"><b>Start location:</b> {{this.flight.start_location.city}},{{this.flight.start_location.country}} <br/>
+            --> <b>End location:</b>  {{this.flight.end_location.city}},{{this.flight.end_location.country}}</p><b>Schedule:</b> <br/>   
+          <div  *ngFor="let sch of flight.schedule"> 
+          <p>Date : {{this.sch.date}}, Day : {{this.sch.day}}, Hour : {{this.sch.hour}}H</p>
+        </div>
+          <!-- <a href="#" class="btn btn-dark">Add schedule</a> -->
+          <button type="button" class="btn btn-dark" (click)="openModal(flight.id)">
+            Add schedule
+          </button>
+        </div>
+      </div>
+</div>

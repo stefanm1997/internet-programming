@@ -1,0 +1,35 @@
+/* .navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+	background-color: black;
+	height: 130px;
+} */
+
+/* .headline h1, .headline form {
+    background-color: black; 
+    height: 120px; 
+    text-align: center; font-family: fantasy; color: white;
+}
+ */
+
+
+/* h3 {
+	text-align: center;
+	font-family: fantasy;
+} */
+
+.navbar {
+	border-radius: 0px
+}
+
+.side-nav {
+	margin-top: 49px !important;
+}
+
+.double-nav .breadcrumb-dn p {
+	color: #fff;
+}
+
+.bg-unique {
+	background-color: #880e4f !important;
+}

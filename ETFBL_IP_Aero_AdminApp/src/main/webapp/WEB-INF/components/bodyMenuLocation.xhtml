@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<script src="resources/js/populate.js"></script>
+</h:head>
+<h1>Admin Aero application</h1>
+<br />
+<div id="locationTable" class="container-fluid"
+	style="display: flex; justify-content: center;">
+	<div onclick="populateLocations()" ondblclick="clearInputLocation();">
+		<h:dataTable value="#{locationBean.locations}" var="location"
+			styleClass="order-table" headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row">
+			<h:column>
+				<h:outputText style="display: none;height:0px;width:0px; "
+					value="#{location.ID}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Country</f:facet>
+				<h:outputText value="#{location.country}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">ISO2</f:facet>
+				<h:outputText value="#{location.ISO2}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">ISO3</f:facet>
+				<h:outputText value="#{location.ISO3}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">City</f:facet>
+				<h:outputText value="#{location.city}" />
+			</h:column>
+
+			<!-- <h:column>
+				<f:facet name="header">Password</f:facet>
+				<h:outputText value="#{employer.password}" />
+			</h:column> -->
+
+
+			<h:column>
+				<f:facet name="header">DELETE</f:facet>
+				<!-- <a href="index.xhtml"><span class="glyphicon glyphicon-remove" style="color:red"></span>
+						</a>  -->
+				<h:form>
+					<h:commandLink action="#{locationBean.deleteLocation}"
+						onclick="scriptAlert('Successfully deleted location! ')">
+						<f:param value="#{location.ID}" name="id" />
+						<i class="glyphicon glyphicon-remove" style="color: red" />
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</div>
+</div>
+<br />
+<br />
+<div class="container-fluid"
+	style="display: flex; justify-content: center;">
+	<br />
+	<h:form id="locationForm" class="form-horizontal">
+		<div class="form-group" style="display: none;">
+			<h:outputLabel class="control-label col-sm-3 ">ID</h:outputLabel>
+			<div class="col-sm-9 ">
+				<h:inputText id="idDiv" class="form-control"
+					value="#{locationBean.location.ID}" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">Country:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="countryDiv" class="form-control" required="true"
+					requiredMessage="Please enter country name!"
+					value="#{locationBean.location.country}" />
+				<h:message for="countryDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">ISO2:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="iso2Div" class="form-control" required="true"
+					requiredMessage="Please enter country ISO2!"
+					value="#{locationBean.location.ISO2}" />
+				<h:message for="iso2Div"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">ISO3:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="iso3Div" class="form-control" required="true"
+					requiredMessage="Please enter country ISO3!"
+					value="#{locationBean.location.ISO3}" />
+				<h:message for="iso3Div"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-3">City:</h:outputLabel>
+			<div class="col-sm-9">
+				<h:inputText id="cityDiv" class="form-control" required="true"
+					requiredMessage="Please enter city name!"
+					value="#{locationBean.location.city}" />
+				<h:message for="cityDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<br />
+		<h:form>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-5">
+					<h:commandButton action="#{locationBean.addLocation}" id="addBtn"
+						type="submit" class="btn btn-success btn-md  btn-block"
+						value="Add">
+					</h:commandButton>
+					<!-- <script>alert('Successfully added user! ')</script> -->
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-3 col-sm-5">
+					<!-- <f:param value="#{user.ID}" name="userId" /> -->
+					<h:commandButton action="#{locationBean.updateLocation}"
+						id="updateBtn" type="submit"
+						class="btn btn-primary btn-md  btn-block" value="Update">
+					</h:commandButton>
+				</div>
+			</div>
+			<div class="form-group">
+				<h:outputLabel class="control-label col-sm-3"></h:outputLabel>
+				<div class="col-sm-5">
+					<h:commandButton id="resetBtn" type="submit"
+						onclick="clearInputLocation();"
+						class="btn btn-secondary btn-md btn-block" value="Reset">
+					</h:commandButton>
+				</div>
+			</div>
+		</h:form>
+	</h:form>
+</div>
+<div class="container-fluid"
+	style="display: flex; justify-content: center;">
+	<h:form class="form-horizontal" style="height:34px; width:302px;">
+		<br />
+		<h:outputLabel value="#{locationBean.message}"
+			style="font-style: oblique;font-size: medium;color: red;" />
+	</h:form>
+<!-- 
+	 <fiji:columnChart id="columnChartOne" title="One-series Column Chart"
+		barCaption="none" captionX="Months" captionY="Amount"
+		toolTipValue="{y} {name} are sold in {x}"
+		subtitle="Hardware sales per month" width="400" height="400" />
+ -->
+<!-- 	<p:panelGrid columns="2" layout="grid">
+		<p:panel>
+			<p:chart type="pie" model="#{locationBean.location}"
+				 />
+		</p:panel>
+		<p:panel>
+			<p:chart type="bar" model="#{accessNumberBean.barModel}" visible="true"
+				style="display:block;margin-right:auto;margin-left:auto;" />
+		</p:panel>
+	</p:panelGrid>  -->
+
+	<!-- <f4j2:chart width="320" height="240">
+		<f4j2:dataSet data="#{locationBean.location}" label="type='bars'"
+			color="red" type="bars" fill="true" />
+	</f4j2:chart> -->
+	<!-- <div class="card">
+		<p:chart type="bar" model="#{accessNumberBean.barModel}"
+			style="height:300px" />
+	</div> -->
+</div>
+<!-- <p:chart type="bar" model="#{accessNumberBean.barModel}" /> -->
+
+        <!-- <p:chart type="line" model="#{accessNumberBean.lineModel}" visible="true" style="height:300px" />
+ -->
+</html>

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+
+<title>ETFBL_IP_Aero_AdminApp</title>
+
+</head>
+<h:body>
+	<f:view>
+		<ui:composition template="/WEB-INF/template/template.xhtml">
+			<ui:define name="header">
+				<ui:include src="/WEB-INF/components/header.xhtml"></ui:include>
+			</ui:define>
+			<ui:define name="body">
+				<ui:include src="/WEB-INF/components/body.xhtml"></ui:include>
+			</ui:define>
+		</ui:composition>
+	</f:view> 
+
+	<!-- <nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<h1 style="color: white;">ETFBL_IP_Aero</h1>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span><span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><img
+				src="resources/assets/logo.ico" /></a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li class="active" ><a href="#">Home</a></li>
+				<li id="location" style="display: none;"><a href="#">Location</a></li>
+				<li id="users" style="display: none;"><a href="#">Users</a></li>
+				<li id="employees" style="display: none;"><a href="#">Employees</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+						Logout</a></li>
+			</ul>
+		</div>
+	</div>
+	</nav> -->
+
+	<!-- <div class="container-fluid">
+		<h1>Admin Aero application</h1><br/><br/><br/><br/>
+		 <div class="mt-5">
+			<h:form id="loginForm" class="form-horizontal"
+				style="">
+				<div class="form-group">
+					<h:outputLabel class="control-label col-sm-4" for="username">Username:</h:outputLabel>
+					<div id="userNameDiv" class="col-sm-4">
+						<h:inputText type="email" class="form-control"
+							placeholder="Enter username" value="#{loginBean.userName}" />
+					</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+					<h:outputLabel class="control-label col-sm-4" for="pwd">Password:</h:outputLabel>
+					<div id="passwordDiv" class="col-sm-4">
+						<h:inputSecret type="password" class="form-control"
+							placeholder="Enter password" />
+					</div>
+				</div>
+				<br/><br/>
+				<div class="form-group">
+					<div id="loginBtn" class="col-sm-offset-4 col-sm-4">
+						<h:commandButton type="submit" class="btn btn-default btn-lg"
+							value="Login" action="#{loginBean.validateUserLogin}" />
+					</div>
+				</div>
+			</h:form>
+			</div>
+		</div> -->
+</h:body>
+</html>

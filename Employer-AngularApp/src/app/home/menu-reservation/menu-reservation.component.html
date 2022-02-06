@@ -1,0 +1,62 @@
+<!-- <div class="form-group" style="width: 300px;">
+    <select class="form-control" id="FormControlSelect"  >
+      <option selected>New</option>
+      <option>All</option>
+    </select>
+  </div> -->
+  <!-- <div class="dropdown" mdbDropdown>
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" mdbBtn mdbWavesEffect mdbDropdownToggle>
+      Dropdown button
+    </button>
+    <div class="dropdown-menu" >
+      <div class="dropdown-item" href="#">Action</div>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+  </div>
+   -->
+<br/>
+<div class="container-fluid">
+ <div class="btn-group" mdbDropdown>
+    <a mdbDropdownToggle type="button" mdbBtn color="dark" class="dropdown-toggle waves-light"
+      mdbWavesEffect>
+      Filter
+    </a>
+  
+    <div class="dropdown-menu dropdown-primary">
+      <a class="dropdown-item" (click)="getAllReservations()">All</a>
+      <a class="dropdown-item" (click)="getOnlyNew()">New</a>
+
+    </div>
+  </div> <br/><br/>
+  <div class="table-responsive" >
+    <table class="table" >
+        <thead class="table-dark" style="text-align: center">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Firstname</th>
+              <th scope="col">Lastname</th>
+              <th scope="col">Flight</th>
+              <th scope="col">Creation date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Reservation</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let reservation of reservations; let i = index">
+            <tr style="text-align: center; vertical-align: middle;">
+              <th scope="row">{{i+1}}</th>
+              <td>{{reservation.user.firstname}}</td>
+              <td>{{reservation.user.lastname}}</td>
+              <td>{{reservation.flight.start_location.country}}, {{reservation.flight.start_location.city}} --> 
+                  {{reservation.flight.end_location.country}}, {{reservation.flight.end_location.city}}</td>
+              <td>{{reservation.date_creation}}</td>
+              <td>{{reservation.status}}</td>
+              <td><button type="button" class="btn btn-success" [disabled]="reservation.status == 'Accepted'" (click)="openModalAccept(reservation.id, i)">Accept</button>
+                <button  type="button" class="btn btn-danger" [disabled]="reservation.status == 'Declined'"  (click)="openModalDecline(reservation.id, i)">Decline</button></td>
+                <!-- [disabled]="reservation.status != 'New'" -->
+            </tr>
+          </tbody>
+    </table>
+  </div>
+</div>
+

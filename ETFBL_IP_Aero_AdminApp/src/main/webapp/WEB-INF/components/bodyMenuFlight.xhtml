@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<script src="resources/js/populate.js"></script>
+</head>
+<h1>Admin Aero application</h1>
+<br />
+<div id="flightTable" class="container-fluid"
+	style="display: flex; justify-content: center;">
+	<div>
+		<h:dataTable id="table_id" value="#{flightBean.flights}"
+			var="flightTable" styleClass="order-table"
+			headerClass="order-table-header"
+			rowClasses="order-table-odd-row,order-table-even-row">
+			<h:column>
+				<h:outputText style="display: none;" value="#{flightTable.ID}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Start location</f:facet>
+				<h:outputText
+					value="#{flightTable.startLocation.country},#{flightTable.startLocation.city}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">End location</f:facet>
+				<h:outputText
+					value="#{flightTable.endLocation.country},#{flightTable.endLocation.city}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Status</f:facet>
+				<h:outputText value="#{flightTable.status}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Seats number</f:facet>
+				<h:outputText value="#{flightTable.seats_Number}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Type</f:facet>
+				<h:outputText value="#{flightTable.type}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">DELETE</f:facet>
+				<!-- <a href="index.xhtml"><span class="glyphicon glyphicon-remove" style="color:red"></span>
+						</a>  -->
+				<h:form>
+					<h:commandLink action="#{flightBean.deleteFlight}"
+						onclick="scriptAlert('Successfully deleted flight with start location: #{flightTable.startLocation.country},#{flightTable.startLocation.city} and end location: #{flightTable.endLocation.country},#{flightTable.endLocation.city} ')">
+						<f:param value="#{flightTable.ID}" name="idFlight" />
+						<i class="glyphicon glyphicon-remove" style="color: red" />
+
+					</h:commandLink>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+	</div>
+</div>
+<br />
+<br />
+<div class="container-fluid"
+	style="display: flex; justify-content: center;">
+	<!-- style="float: right;" -->
+	<!--  <div class="d-flex justify-content-end">  -->
+	<br />
+	<h:form id="addForm" class="form-horizontal" style="">
+		<div class="form-group" style="display: none;">
+			<h:outputLabel class="control-label col-sm-3 ">ID</h:outputLabel>
+			<div class="col-sm-9 ">
+				<h:inputText id="idDiv" class="form-control" required="true"
+					value="#{flightBean.flight.ID}" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-5 ">Start location:</h:outputLabel>
+			<div class="col-sm-7 ">
+				<h:selectOneMenu class="form-control"
+					value="#{flightBean.startLocation}">
+					<f:selectItems value="#{flightBean.stringLocations}" />
+				</h:selectOneMenu>
+				<!-- <h:inputText id="emailDiv" class="form-control" required="true"
+					requiredMessage="Please enter your email!"
+					value="#{userBean.user.email}" /> -->
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-5">End location:</h:outputLabel>
+			<div class="col-sm-7">
+				<h:selectOneMenu class="form-control"
+					value="#{flightBean.endLocation}">
+					<f:selectItems value="#{flightBean.stringLocations}" />
+				</h:selectOneMenu>
+			</div>
+
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-5">Status:</h:outputLabel>
+			<div class="col-sm-7">
+				<h:selectOneMenu class="form-control" value="#{flightBean.status}">
+					<f:selectItem itemValue="arrival" />
+					<f:selectItem itemValue="departure" />
+				</h:selectOneMenu>
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-5">Seats number:</h:outputLabel>
+			<div class="col-sm-7">
+				<h:inputText id="seatsDiv" class="form-control" required="true"
+					requiredMessage="Please enter your seats number!"
+					value="#{flightBean.seats_number}"
+					converterMessage="Only numbers can be enetered!" />
+
+				<h:message for="seatsDiv"
+					style="font-style: oblique;font-size: medium;color: red;" />
+			</div>
+		</div>
+		<div class="form-group">
+			<h:outputLabel class="control-label col-sm-5">Type:</h:outputLabel>
+			<div class="col-sm-7">
+				<h:selectOneMenu class="form-control" value="#{flightBean.type}">
+					<f:selectItem itemValue="worker" />
+					<f:selectItem itemValue="passenger" />
+				</h:selectOneMenu>
+			</div>
+		</div>
+		<br />
+		<h:form>
+			<div class="form-group">
+				<div class="col-sm-offset-5 col-sm-5">
+					<h:commandButton action="#{flightBean.addFlight}" id="addBtn"
+						type="submit" class="btn btn-success btn-md  btn-block"
+						value="Add">
+					</h:commandButton>
+					<!-- <script>alert('Successfully added user! ')</script> -->
+				</div>
+			</div>
+		</h:form>
+	</h:form>
+</div>
+</html>

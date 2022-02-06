@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="3.0">
+
+	<channel>
+		<title>User App</title>
+		<link>http://localhost:8081/ETFBL_IP_Aero_UserApp</link>
+		<description>User App for reservation i view flights
+		</description>
+		<item>
+			<title>Today arrivals</title>
+			<link>http://localhost:8081/ETFBL_IP_Aero_UserApp/?action=arrivals
+			</link>
+			<guid>http://localhost:8081/ETFBL_IP_Aero_UserApp/?action=arrivals
+			</guid>
+			<description>All today arrivals</description>
+		</item>
+		<item>
+			<title>Today departures</title>
+			<link>http://localhost:8081/ETFBL_IP_Aero_UserApp/?action=departures
+			</link>
+			<guid>http://localhost:8081/ETFBL_IP_Aero_UserApp/?action=departures
+			</guid>
+			<description>All today departures</description>
+		</item>
+	</channel>
+
+</rss>

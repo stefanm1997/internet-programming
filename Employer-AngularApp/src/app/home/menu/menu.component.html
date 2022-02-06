@@ -1,0 +1,52 @@
+
+<!-- <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark" [containerInside]="false">
+    <mdb-navbar-brand>
+        <a class="logo navbar-brand" href="#"><strong>Navbar</strong></a>
+    </mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active waves-light" mdbWavesEffect>
+                <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link">Features</a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link">Pricing</a>
+            </li>
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <a class="nav-link">Opinions</a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>
+
+<main>
+    
+</main> -->
+
+<!--Navbar class="navbar navbar-dark indigo navbar-brand nav-item"  -->
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark " >
+    <a  href="/home" ><img
+        src="assets/logo.ico" height="50px" width="80px" /></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home-flight" style="color: honeydew;">Flights</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/home-reservation" style="color: honeydew;">Reservation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/home-message" style="color: honeydew;">Messages</a>
+        </li>
+      </ul>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a class="btn btn-dark" href="/login" style="color: rgb(255, 255, 255);" (click)="logout()">
+          Logout</a>
+      </li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>

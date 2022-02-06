@@ -1,0 +1,46 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<h:head>
+<SCRIPT type="text/javascript">
+$(function(){
+    $('.nav li a').filter(function(){return this.href==location.href}).parent().addClass('active').siblings().removeClass('active')
+    $('.nav li a').click(function(){
+        $(this).parent().addClass('active').siblings().removeClass('active')    
+    })
+})
+</SCRIPT>
+</h:head>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<h1 style="color: white;">ETFBL_IP_Aero</h1>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span><span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<li class="active"><a class="navbar-brand" href="menu.xhtml"><img
+				src="resources/assets/logo.ico" /></a></li>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a href="menuUser.xhtml" style="color: honeydew;">User</a></li>
+				<li><a href="menuEmployer.xhtml" style="color: honeydew;">Employer</a></li>
+				<li><a href="menuLocation.xhtml" style="color: honeydew;">Location</a></li>
+				<li><a href="menuFlight.xhtml" style="color: honeydew;">Flight</a></li>
+			</ul>
+			<h:form>
+				<ul class="nav navbar-nav navbar-right">
+					<li><h:commandLink type="submit" style="color: honeydew;" value="Logout"
+						 action="#{adminBean.logoutAdmin}">
+							<i class="glyphicon glyphicon-log-out" />
+						</h:commandLink></li>
+				</ul>
+			</h:form>
+		</div>
+	</div>
+</nav>
+</html>

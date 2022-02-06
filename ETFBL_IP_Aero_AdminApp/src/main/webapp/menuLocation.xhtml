@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>ETFBL_IP_Aero_AdminApp</title>
+</h:head>
+<h:body>
+	<f:view>
+		<ui:composition
+			template="/WEB-INF/template/templateMenuLocation.xhtml">
+			<ui:define name="headerMenu">
+				<ui:include src="/WEB-INF/components/headerMenu.xhtml"></ui:include>
+			</ui:define>
+			<ui:define name="bodyMenuLocation">
+				<ui:include src="/WEB-INF/components/bodyMenuLocation.xhtml"></ui:include>
+			</ui:define>
+			<ui:define name="chart">
+				<p:barChart style="height:20px;width:20px;" model="#{accessNumberBean.barModel}"></p:barChart>
+			</ui:define>
+		</ui:composition>
+	</f:view>
+</h:body>
+</html>
